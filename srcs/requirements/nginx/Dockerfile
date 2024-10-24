@@ -14,8 +14,8 @@ RUN mkdir -p /var/run/nginx
 COPY /conf/nginx.conf /etc/nginx/nginx.conf
 
 # setting permissions
-RUN chmod 755 /var/www/wordpress
-RUN chown -R www-data:www-data /var/www/wordpress
+#RUN chmod 755 /var/www/wordpress
+#RUN chown -R www-data:www-data /var/www/wordpress
 
 # run NGINX
 CMD [ "nginx", "-g", "daemon off;" ]
