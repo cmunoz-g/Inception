@@ -26,4 +26,6 @@ docker rm [container_id] (stops a container)
 # useful info
 The CMD instruction in a Dockerfile defines the default command that will be executed
 when the container starts.
-daemon off tells NGINX to run in the foreground, which keeps the process alive in the terminal
+"daemon off" tells NGINX to run in the foreground, which keeps the process alive in the terminal
+"req" creates and processes certificate requests in PKCS#10 format, -x509 is the type of certificate,
+-nodes leaves the private key without a password
