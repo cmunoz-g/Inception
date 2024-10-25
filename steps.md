@@ -19,10 +19,13 @@ systemctl start docker (start docker)
 
 docker images (check the docker images)
 docker rmi [image_id] || docker rmi [repository]:[tag] (deletes a docker image)
+docker rmi $(docker images -q) (deletes all images)
 
 docker ps -a (know the containers currently launched)
 docker stop [container_id] (stops a container)
+docker stop $(docker ps -q) (stops all containers)
 docker rm [container_id] (removes a container)
+docker rm $(docker ps -aq) (removes all containers)
 
 # useful info
 The CMD instruction in a Dockerfile defines the default command that will be executed

@@ -18,3 +18,14 @@ RUN chown -R root:root /var/www/wordpress
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar 
 RUN mv wp-cli.phar /usr/local/bin/wp
+
+# copy the conf. file
+COPY conf/wp.sh .
+RUN chmod +x wp.sh
+
+# fix possible php error
+RUN mkdir -p /run/php
+
+ENTRYPOINT ["./wp.sh"] 
+# launch php
+CMD ["/usr/sbin/php-fpm7.3", "-F"] 
