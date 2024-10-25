@@ -21,7 +21,8 @@ docker images (check the docker images)
 docker rmi [image_id] || docker rmi [repository]:[tag] (deletes a docker image)
 
 docker ps -a (know the containers currently launched)
-docker rm [container_id] (stops a container)
+docker stop [container_id] (stops a container)
+docker rm [container_id] (removes a container)
 
 # useful info
 The CMD instruction in a Dockerfile defines the default command that will be executed
