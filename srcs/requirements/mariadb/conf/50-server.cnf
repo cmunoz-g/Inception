@@ -1,8 +1,9 @@
-# mysqld refers to MySQL daemon (core process of MySQL, runs in the background)
 [mysqld]
-datadir = /var/lib/mysql
+user = mysql
 socket = /run/mysqld/mysqld.sock
+basedir = /usr
+tmpdir = /tmp
+datadir = /var/lib/mysql
 # listen to all connections on all network interfaces
 bind_address=*
 port = 3306
-user = mysql

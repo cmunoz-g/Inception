@@ -15,8 +15,8 @@ wp config create --allow-root \
 --dbname="${db}" \
 --dbuser="${dbuser}" \
 --dbpass="${dbpass}" \
---dbhost="${dbhost}" \
---path='/var/www/wordpress'
+--dbhost=mariadb \
+#--path='/var/www/wordpress'
 
 # running WordPress setup: site title, admin username, admin passw, email
 echo "Running WordPress installation"

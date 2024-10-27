@@ -43,7 +43,6 @@ services:
       - cmunoz-g
     restart: on-failure
 
-
 volumes:
   mariadb:
     driver: local
