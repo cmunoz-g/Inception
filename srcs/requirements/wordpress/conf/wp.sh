@@ -3,7 +3,7 @@
 # script to configure wordpress with wp-cli
 
 echo "Waiting for database"
-sleep 2s # delaying the script to make sure the database is created beforehand
+sleep 3s # delaying the script to make sure the database is created beforehand
 
 if [ -f /var/www/wordpress/wp-config.php ]; then
 	echo "Config. file exists"

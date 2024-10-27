@@ -1,0 +1,72 @@
+version: "2.29.6"
+
+services:
+  mariadb:
+    build:
+      context: requirements/mariadb
+      dockerfile: Dockerfile
+    env_file : .env
+    volumes : 
+      - mariadb:/var/lib/mysql
+    expose:
+      - "3306"
+    networks:
+      - cmunoz-g
+    restart: unless-stopped
+  
+  wordpress:
+    build:
+      context: requirements/wordpress
+      dockerfile: Dockerfile
+    env_file : .env
+    volumes: 
+      - wordpress:/var/www/wordpress
+    expose:
+      - "9000"
+    depends_on:
+      - mariadb
+    networks:
+      - cmunoz-g
+    restart: on-failure
+  
+  nginx:
+    build:
+      context: requirements/nginx
+      dockerfile: Dockerfile
+    volumes:
+      - wordpress:/var/www/wordpress
+    ports :
+      - "443:443"
+    depends_on:
+      - wordpress
+    networks:
+      - cmunoz-g
+    restart: on-failure
+
+
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Inception_volumes # change to /Users/cmunoz-g/data/mariadb
+    name: mariadb
+    labels:
+    - "purpose=database"
+    - "project=inception"
+
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Inception_volumes # change to /Users/cmunoz-g/data/wordpress
+    name: wordpress
+    labels:
+    - "purpose=web"
+    - "project=inception"
+
+networks:
+  cmunoz-g:
+    driver: bridge
