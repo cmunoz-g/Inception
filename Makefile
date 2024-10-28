@@ -29,7 +29,7 @@ stop:
 	@echo "$(BLUE)Containers stopped.$(DEF_COLOR)"
 
 clean: 
-	@$(DOCKER_COMPOSE) down -v
+	@$(DOCKER_COMPOSE) down -v --remove-orphans
 	@echo "$(CYAN)Containers and volumes removed.$(DEF_COLOR)"
 
 delete: clean

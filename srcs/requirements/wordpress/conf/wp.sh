@@ -1,9 +1,9 @@
-#!bin/bash
+#!/bin/bash
 
 # script to configure wordpress with wp-cli
 
 echo "Waiting for database"
-sleep 3s # delaying the script to make sure the database is created beforehand
+sleep 10 # delaying the script to make sure the database is created beforehand
 
 if [ -f /var/www/wordpress/wp-config.php ]; then
 	echo "Config. file exists"
@@ -18,7 +18,7 @@ wp config create --allow-root \
 --dbhost=mariadb \
 #--path='/var/www/wordpress'
 
-# running WordPress setup: site title, admin username, admin passw, email
+# running WordPress setup: site title, admin username, email
 echo "Running WordPress installation"
 wp core install --allow-root \
 --title="cmunoz-g" \

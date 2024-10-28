@@ -1,9 +1,6 @@
 [mysqld]
-user = mysql
-socket = /run/mysqld/mysqld.sock
-basedir = /usr
-tmpdir = /tmp
 datadir = /var/lib/mysql
-# listen to all connections on all network interfaces
+socket  = /run/mysqld/mysqld.sock
 bind_address=*
 port = 3306
+user = mysql

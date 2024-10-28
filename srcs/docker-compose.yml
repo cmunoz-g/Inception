@@ -1,5 +1,3 @@
-version: "2.29.6"
-
 services:
   mariadb:
     build:
@@ -31,8 +29,8 @@ services:
   
   nginx:
     build:
-      context: requirements/nginx
-      dockerfile: Dockerfile
+     context: requirements/nginx
+     dockerfile: Dockerfile
     volumes:
       - wordpress:/var/www/wordpress
     ports :
