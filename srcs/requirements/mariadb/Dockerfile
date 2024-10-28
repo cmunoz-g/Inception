@@ -7,7 +7,9 @@ RUN apt-get update -y && apt-get upgrade -y \
 COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
 COPY conf/db.sh .
 
-RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld /var/lib/mysql
+RUN mkdir -p /var/run/mysqld && chown -R mysql:mysql /var/run/mysqld /var/lib/mysql
 RUN chmod +x db.sh
 
 CMD ["./db.sh"]
+
+# /var/run/mysqld/mysqld.sock

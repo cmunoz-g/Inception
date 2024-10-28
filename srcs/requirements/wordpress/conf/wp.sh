@@ -22,7 +22,7 @@ wp config create --allow-root \
 --dbname="${db}" \
 --dbuser="${dbuser}" \
 --dbpass="${dbpass}" \
---dbhost="mariadb" \
+--dbhost=mariadb:3306 \
 --path='/var/www/wordpress' || echo "wp-config.php failed"
 
 # running WordPress setup: site title, admin username, email

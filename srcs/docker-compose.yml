@@ -1,8 +1,7 @@
 services:
   mariadb:
-    build:
-      context: requirements/mariadb
-      dockerfile: Dockerfile
+    container_name: mariadb
+    build: requirements/mariadb/.
     env_file : .env
     volumes : 
       - mariadb:/var/lib/mysql
@@ -10,12 +9,11 @@ services:
       - "3306"
     networks:
       - cmunoz-g
-    restart: unless-stopped
+    restart: always
   
   wordpress:
-    build:
-      context: requirements/wordpress
-      dockerfile: Dockerfile
+    container_name: wordpress
+    build: requirements/wordpress/.
     env_file : .env
     volumes: 
       - wordpress:/var/www/wordpress
@@ -28,9 +26,8 @@ services:
     restart: on-failure
   
   nginx:
-    build:
-     context: requirements/nginx
-     dockerfile: Dockerfile
+    container_name: nginx
+    build: requirements/nginx/.
     volumes:
       - wordpress:/var/www/wordpress
     ports :
