@@ -44,7 +44,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /Inception_volumes # change to /Users/cmunoz-g/data/mariadb
+      device: /Inception_volumes/mariadb # change to /Users/cmunoz-g/data/mariadb
     name: mariadb
     labels:
     - "purpose=database"
@@ -55,7 +55,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /Inception_volumes # change to /Users/cmunoz-g/data/wordpress
+      device: /Inception_volumes/wordpress # change to /Users/cmunoz-g/data/wordpress
     name: wordpress
     labels:
     - "purpose=web"

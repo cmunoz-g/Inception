@@ -1,5 +1,3 @@
-NAME = Inception 
-
 # Colors
 DEF_COLOR 	= 	\033[0;39m
 RED 		= 	\033[0;91m
@@ -18,9 +16,11 @@ DOCKER_COMPOSE = docker-compose -f $(COMPOSE_FILE)
 
 ###
 
-all: $(NAME)
+all: build
 
-$(NAME): 
+build:
+	@mkdir -p /Inception_volumes/mariadb
+	@mkdir -p /Inception_volumes/wordpress
 	@$(DOCKER_COMPOSE) up -d --build
 	@echo "$(GREEN)Project started successfully! Containers are up and running.$(DEF_COLOR)"
 
