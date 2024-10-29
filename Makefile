@@ -19,8 +19,8 @@ DOCKER_COMPOSE = docker-compose -f $(COMPOSE_FILE)
 all: build
 
 build:
-	@mkdir -p /Inception_volumes/mariadb
-	@mkdir -p /Inception_volumes/wordpress
+	@mkdir -p /Ivolumes/mariadb
+	@mkdir -p /Ivolumes/wordpress
 	@$(DOCKER_COMPOSE) up -d --build
 	@echo "$(GREEN)Project started successfully! Containers are up and running.$(DEF_COLOR)"
 
@@ -33,7 +33,7 @@ clean:
 	@echo "$(CYAN)Containers and volumes removed.$(DEF_COLOR)"
 
 delete: clean
-	@docker system prune -af
+	@docker system prune -af --volumes
 	@echo "$(RED)All unused Docker resources have been pruned.$(DEF_COLOR)"
 
 logs:
