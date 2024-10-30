@@ -13,7 +13,7 @@ MAKEFLAGS 	+=	--no-print-directory
 # Docker Compose Configuration
 # for the VM, change docker-compose for docker compose
 COMPOSE_FILE = ./srcs/docker-compose.yml
-DOCKER_COMPOSE = docker-compose -f $(COMPOSE_FILE)
+DOCKER_COMPOSE = docker compose -f $(COMPOSE_FILE)
 
 ###
 

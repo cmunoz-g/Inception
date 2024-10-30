@@ -6,8 +6,8 @@
 #sleep 10 # delaying the script to make sure the database is created beforehand
 
 until mysqladmin ping -h "mariadb" --silent; do
-    #echo "Waiting for database to be ready..."
-    sleep infinity # test
+    echo "Waiting for database to be ready..."
+    sleep 10
 done
 
 if [ -f /var/www/wordpress/wp-config.php ]; then
