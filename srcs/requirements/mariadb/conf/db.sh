@@ -14,15 +14,16 @@ mysqld_safe --skip-networking &
 sleep 10 || echo "Failed to start MySQL"
 
 # Attempt database setup commands with error checking
-echo "CREATE DATABASE IF NOT EXISTS $db;" >> db1.sql
-echo "CREATE USER IF NOT EXISTS '$dbuser'@'%' IDENTIFIED BY '$dbpass';" >> db1.sql
-echo "GRANT ALL PRIVILEGES ON *.* TO '$dbuser'@'%' WITH GRANT OPTION;" >> db1.sql
-echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$dbrootpass' ;" >> db1.sql
-echo "FLUSH PRIVILEGES;" >> db1.sql
+if [ ! -f db1.sql ]; then 
+	echo "CREATE DATABASE IF NOT EXISTS $db;" >> db1.sql
+	echo "CREATE USER IF NOT EXISTS '$dbuser'@'%' IDENTIFIED BY '$dbpass';" >> db1.sql
+	echo "GRANT ALL PRIVILEGES ON *.* TO '$dbuser'@'%' WITH GRANT OPTION;" >> db1.sql
+	echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$dbrootpass' ;" >> db1.sql
+	echo "FLUSH PRIVILEGES;" >> db1.sql
+	mysql -u root -p"$dbrootpass" < db1.sql && echo "Executed SQL script" || echo "Failed to execute SQL script."
 
-mysql -u root -p"$dbrootpass" < db1.sql && echo "Executed SQL script" || echo "Failed to execute SQL script."
-
-mysqladmin -u root -p"$dbrootpass" shutdown || echo "Failed to stop MySQL."
+	mysqladmin -u root -p"$dbrootpass" shutdown || echo "Failed to stop MySQL."`
+fi
 
 echo "Restarting MySQL"
 exec mysqld_safe || echo "Failed to start mysqld."

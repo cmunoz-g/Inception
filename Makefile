@@ -37,6 +37,8 @@ clean:
 
 delete: clean
 	@docker system prune -af --volumes
+	@rm -rf home/vboxuser/Ivolumes/mariadb
+	@rm -rf home/vboxuser/Ivolumes/wordpress
 	@echo "$(RED)All unused Docker resources have been pruned.$(DEF_COLOR)"
 
 logs:
