@@ -15,7 +15,10 @@ if [ -f /var/www/wordpress/wp-config.php ]; then
 	exit 0
 fi
 
-wp core download --allow-root --path='/var/www/wordpress'
+wp core download --allow-root --path='/var/www/wordpress' || echo "Wordpress installation failed"
+
+chown -R www-data:www-data /var/www/wordpress
+chmod -R 755 /var/www/wordpress
 
 echo "Creating wp-config.php"
 wp config create --allow-root \

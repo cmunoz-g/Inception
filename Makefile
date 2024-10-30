@@ -13,17 +13,18 @@ MAKEFLAGS 	+=	--no-print-directory
 # Docker Compose Configuration
 # for the VM, change docker-compose for docker compose
 COMPOSE_FILE = ./srcs/docker-compose.yml
-DOCKER_COMPOSE = docker compose -f $(COMPOSE_FILE)
+DOCKER_COMPOSE = docker-compose -f $(COMPOSE_FILE)
 
 ###
 
 all: build
 
-# change directories for volumes in my machine
+# @mkdir -p /home/vboxuser/Ivolumes/mariadb
+# @mkdir -p /home/vboxuser/Ivolumes/wordpress
 
 build:
-	@mkdir -p /home/vboxuser/Ivolumes/mariadb
-	@mkdir -p /home/vboxuser/Ivolumes/wordpress
+	@mkdir -p /home/cmunoz-g/Ivolumes/mariadb
+	@mkdir -p /home/cmunoz-g/Ivolumes/wordpress
 	@$(DOCKER_COMPOSE) up -d --build
 	@echo "$(GREEN)Project started successfully! Containers are up and running.$(DEF_COLOR)"
 
@@ -35,10 +36,15 @@ clean:
 	@$(DOCKER_COMPOSE) down -v --remove-orphans
 	@echo "$(CYAN)Containers and volumes removed.$(DEF_COLOR)"
 
+# @rm -rf home/vboxuser/Ivolumes/wordpress
+# @rm -rf home/vboxuser/Ivolumes/mariadb
+
+# take out sudo from the rm -rf, decide where im going to put the volumes and handle permissions
+
 delete: clean
 	@docker system prune -af --volumes
-	@rm -rf home/vboxuser/Ivolumes/mariadb
-	@rm -rf home/vboxuser/Ivolumes/wordpress
+	@rm -rf /home/cmunoz-g/Ivolumes/mariadb
+	@rm -rf /home/cmunoz-g/Ivolumes/wordpress
 	@echo "$(RED)All unused Docker resources have been pruned.$(DEF_COLOR)"
 
 logs:
