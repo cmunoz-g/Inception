@@ -11,6 +11,7 @@ MAKEFLAGS 	+=	--no-print-directory
 .SILENT:
 
 # Docker Compose Configuration
+# for the VM, change docker-compose for docker compose
 COMPOSE_FILE = ./srcs/docker-compose.yml
 DOCKER_COMPOSE = docker-compose -f $(COMPOSE_FILE)
 
@@ -21,8 +22,8 @@ all: build
 # change directories for volumes in my machine
 
 build:
-	@mkdir -p ./wordpress
-	@mkdir -p ./mariadb 
+	@mkdir -p /home/vboxuser/Ivolumes/mariadb
+	@mkdir -p /home/vboxuser/Ivolumes/wordpress
 	@$(DOCKER_COMPOSE) up -d --build
 	@echo "$(GREEN)Project started successfully! Containers are up and running.$(DEF_COLOR)"
 
