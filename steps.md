@@ -33,3 +33,9 @@ when the container starts.
 "daemon off" tells NGINX to run in the foreground, which keeps the process alive in the terminal
 "req" creates and processes certificate requests in PKCS#10 format, -x509 is the type of certificate,
 -nodes leaves the private key without a password
+
+# config https login
+cd /etc
+vim hosts
+add a line that redirects 127.0.0.1 to my login url
+set it in nginx conf

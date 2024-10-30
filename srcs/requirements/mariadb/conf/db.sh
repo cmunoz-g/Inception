@@ -22,7 +22,7 @@ if [ ! -f db1.sql ]; then
 	echo "FLUSH PRIVILEGES;" >> db1.sql
 	mysql -u root -p"$dbrootpass" < db1.sql && echo "Executed SQL script" || echo "Failed to execute SQL script."
 
-	mysqladmin -u root -p"$dbrootpass" shutdown || echo "Failed to stop MySQL."`
+	mysqladmin -u root -p"$dbrootpass" shutdown || echo "Failed to stop MySQL."
 fi
 
 echo "Restarting MySQL"

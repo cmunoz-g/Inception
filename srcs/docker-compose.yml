@@ -38,6 +38,8 @@ services:
       - cmunoz-g
     restart: on-failure
 
+# VERY IMPORTANT: make sure the volumes are completely removed (sudo) before make re
+
 volumes:
   mariadb:
     driver: local
