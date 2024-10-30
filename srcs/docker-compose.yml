@@ -15,7 +15,7 @@ services:
     container_name: wordpress
     build: requirements/wordpress/.
     env_file : .env
-    volumes: 
+    volumes:
       - wordpress:/var/www/wordpress
     expose:
       - "9000"
@@ -44,7 +44,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /Ivolumes/mariadb # change to /Users/cmunoz-g/data/mariadb
+      device: ./mariadb # /Ivolumes/mariadb
     name: mariadb
     labels:
     - "purpose=database"
@@ -55,7 +55,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /Ivolumes/wordpress # change to /Users/cmunoz-g/data/wordpress
+      device: ./wordpress # /Ivolumes/wordpress
     name: wordpress
     labels:
     - "purpose=web"

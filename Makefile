@@ -18,9 +18,11 @@ DOCKER_COMPOSE = docker-compose -f $(COMPOSE_FILE)
 
 all: build
 
+# change directories for volumes in my machine
+
 build:
-	@mkdir -p /Ivolumes/mariadb
-	@mkdir -p /Ivolumes/wordpress
+	@mkdir -p ./wordpress
+	@mkdir -p ./mariadb 
 	@$(DOCKER_COMPOSE) up -d --build
 	@echo "$(GREEN)Project started successfully! Containers are up and running.$(DEF_COLOR)"
 
