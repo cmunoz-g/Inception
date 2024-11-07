@@ -46,7 +46,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/cmunoz-g/Ivolumes/mariadb # /home/vboxuser/Ivolumes/mariadb 
+      device: /home/vboxuser/Ivolumes/mariadb #/home/cmunoz-g/Ivolumes/mariadb 
     name: mariadb
     labels:
     - "purpose=database"
@@ -57,7 +57,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/cmunoz-g/Ivolumes/wordpress # /home/vboxuser/Ivolumes/wordpress
+      device: /home/vboxuser/Ivolumes/wordpress # /home/cmunoz-g/Ivolumes/wordpress 
     name: wordpress
     labels:
     - "purpose=web"
