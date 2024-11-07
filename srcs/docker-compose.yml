@@ -16,7 +16,7 @@ services:
     build: requirements/wordpress/.
     env_file : .env
     volumes:
-      - wordpress:/var/www/wordpress
+      - wordpress:/var/www/html
     expose:
       - "9000"
     depends_on:
@@ -29,7 +29,7 @@ services:
     container_name: nginx
     build: requirements/nginx/.
     volumes:
-      - wordpress:/var/www/wordpress
+      - wordpress:/var/www/html
     ports :
       - "443:443"
     depends_on:
