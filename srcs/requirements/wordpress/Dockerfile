@@ -17,6 +17,6 @@ RUN mkdir -p /run/php
 
 EXPOSE 9000
 
-ENTRYPOINT ["./wp.sh"] 
+CMD ["./wp.sh"] 
 # launch php
 #CMD ["/usr/sbin/php-fpm7.3", "-F"] 
