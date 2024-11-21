@@ -1,7 +1,7 @@
 FROM debian:buster 
 
 # installing packages
-RUN apt-get update -y && && apt-get upgrade -y && apt-get install nginx -y
+RUN apt-get update -y && apt-get upgrade -y && apt-get install nginx -y
 RUN apt-get install vim -y
 
 # installing openssl, generating certificate and storing it
