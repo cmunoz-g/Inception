@@ -8,11 +8,10 @@ until mysqladmin ping -h "mariadb" --silent; do
     sleep 10
 done
 
-if [ -f /var/www/html/wp-config.php ]; then
+if [ -f /var/www/html/wp-config.php ]
+then
 	echo "Config. file exists"
-	exit 0
-fi
-
+else
 cd /var/www/html
 wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar 1> /dev/null
 chmod +x wp-cli.phar
@@ -51,3 +50,7 @@ echo "Creating additional user"
 --path='/var/www/html' || echo "Additional user creation failed"
 
 echo "WordPress setup complete!"
+
+fi
+
+/usr/sbin/php-fpm7.3 -F
