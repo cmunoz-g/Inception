@@ -1,0 +1,10 @@
+services:
+  nginx:
+    build: requirements/nginx/.
+    container_name: nginx
+    ports:
+      - "80:80" #cambiar a https
+
+  wordpress:
+    build: requirements/wordpress/.
+    container_name: wordpress
