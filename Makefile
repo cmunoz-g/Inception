@@ -8,6 +8,7 @@ YELLOW = \e[0;33m
 #docker compose configuration
 COMPOSE_FILE = ./srcs/docker-compose.yml
 COMPOSE = docker compose -f $(COMPOSE_FILE)
+VOLUMES_PATH = /home/cmunoz-g/Ivols
 
 ###
 
@@ -15,6 +16,8 @@ all: build
 
 # add volumes
 build:
+	@mkdir -p $(VOLUMES_PATH)/website
+	@mkdir -p $(VOLUMES_PATH)/database
 	@$(COMPOSE) up -d --build
 	@echo "$(GREEN)Project started successfully. Containers are up and running$(RESET_COLOR)"
 
@@ -28,6 +31,8 @@ clean:
 
 delete: clean
 	@docker system prune -af --volumes
+	@mkdir -p $(VOLUMES_PATH)/website
+	@mkdir -p $(VOLUMES_PATH)/database
 	@echo "$(RED)All Docker resources were pruned.$(RESET_COLOR)"
 
 logs:

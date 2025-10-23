@@ -6,9 +6,9 @@ services:
       - wordpress
       - mariadb
     ports:
-      - "80:80" #cambiar a https
+      - "443:443" #cambiar a https
     volumes:
-      - ./web:/var/www/html
+      - website:/var/www/html
     networks:
       - inception
 
@@ -16,17 +16,34 @@ services:
     build: requirements/wordpress/.
     container_name: wordpress
     volumes:
-      - ./web:/var/www/html
+      - website:/var/www/html
     networks:
       - inception
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb
     volumes:
-      - ./database:/var/lib/mysql
+      - database:/var/lib/mysql
     networks:
       - inception
-      
+
+volumes:
+  website:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/cmunoz-g/Ivols/website
+    name:
+      website
+  
+  database:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/cmunoz-g/Ivols/database
+
 networks:
   inception:
     driver: bridge
